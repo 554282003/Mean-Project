@@ -3,11 +3,15 @@ const {Schema,model} = require('mongoose');
 const DonationSchema = Schema({
     campaign_id :{
         type : Schema.Types.ObjectId ,
-        ref : "Campaign"  //refer to the model
+        ref : "campaign"  //refer to the model
+    },
+    project_id :{
+        type : Schema.Types.ObjectId ,
+        ref : "project"  //refer to the model
     },
     user_id: {
         type: Schema.Types.ObjectId,
-        ref : "User"
+        ref : "user"
     },
     amount:{
         type : Number,

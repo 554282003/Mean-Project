@@ -3,7 +3,7 @@ const {Schema,model} = require('mongoose')
 const campaignSchema = Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref : "User"
+        ref : "user"
     },
     title : {
         type : String,
