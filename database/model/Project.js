@@ -5,11 +5,11 @@ const projectSchema = Schema({
         type : Schema.Types.ObjectId ,
         ref : "campaign"  //refer to the model
     },
-    title : {
+    project_title : {
         type : String,
         required : true,
     },
-    description : {
+    project_description : {
         type : String,
         required : true,
     },
@@ -30,6 +30,6 @@ const projectSchema = Schema({
     },
 },{timestamps : true})
 
-const Project = model('project',projectSchema)
+const Project = model('Project',projectSchema)
 
 module.exports = Project;

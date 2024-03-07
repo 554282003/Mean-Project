@@ -34,6 +34,6 @@ const campaignSchema = Schema({
     },
 },{timestamps : true})
 
-const Campaign = model('campaign',campaignSchema);
+const Campaign = model('Campaign',campaignSchema);
 
 module.exports = Campaign;

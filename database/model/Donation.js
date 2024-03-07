@@ -22,6 +22,6 @@ const DonationSchema = Schema({
     }
 },{timestamps : true})
 
-const Donation = model('donation',DonationSchema)
+const Donation = model('Donation',DonationSchema)
 
 module.exports = Donation;
