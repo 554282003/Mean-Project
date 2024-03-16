@@ -9,6 +9,9 @@ const projectSchema = Schema({
         type : String,
         required : true,
     },
+    project_image:{
+        type : String, 
+    },
     project_description : {
         type : String,
         required : true,
@@ -23,13 +26,22 @@ const projectSchema = Schema({
         default : Date.now(),
         required : true 
     },
+    goal_amount : {
+        type : String,
+        required: true,
+        default : 0
+    },
     status :{
         type : String,
         enum : ["In Progress","completed"],
         default : "In progress"
     },
+    createdBy : {
+        type : Schema.Types.ObjectId,
+        ref : 'User'   //refers
+    }
 },{timestamps : true})
 
 const Project = model('Project',projectSchema)
 
-module.exports = Project;
+module.exports = {Project};

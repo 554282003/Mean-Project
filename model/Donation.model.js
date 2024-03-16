@@ -24,4 +24,4 @@ const DonationSchema = Schema({
 
 const Donation = model('Donation',DonationSchema)
 
-module.exports = Donation;
+module.exports = {Donation};
