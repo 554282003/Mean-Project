@@ -17,9 +17,6 @@ const UserSchema = Schema(
       required: true,
       unique: true,
     },
-    projectHistory:
-      [{type : Schema.Types.ObjectId,
-      ref: "Project"}],
     password: {
       type: String,
       required: true,

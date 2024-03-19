@@ -13,10 +13,10 @@ const { verifyJWT } = require("../middlewares/auth.middleware");
 
 router.route("/register").post(userRegister);
 router.route("/userLogin").post(userLogin);
-router.route("/userLogOut").post(verifyJWT, userLogOut);
-router.route("/allPastProject").post(verifyJWT, AllPastProject);
-router.route("/profile").post(verifyJWT, Profile);
-router.route("/updateProfile").post(verifyJWT, updateProfile);
-router.route("/changepassword").post(verifyJWT, changepassword);
+router.route("/allPastProject").post(verifyJWT,AllPastProject);
+router.route("/profile").post(verifyJWT,Profile);
+router.route("/updateProfile").post(verifyJWT,updateProfile);
+router.route("/changepassword").post(verifyJWT,changepassword);
+router.route("/userLogOut").post(verifyJWT,userLogOut);
 
 module.exports = router;

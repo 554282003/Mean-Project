@@ -1,4 +1,5 @@
 const { User } = require("../model/User.model");
+const { Project } = require("../model/Project.model");
 const { ApiError } = require("../utils/ApiError");
 const { ApiResponse } = require("../utils/ApiResponse");
 const { asyncHandler } = require("../utils/asyncHandler");
@@ -90,9 +91,12 @@ const userLogin = asyncHandler(async (req, res) => {
 });
 
 const AllPastProject = asyncHandler(async (req, res) => {
-  const AllUserProject = await User.findById(req.user.projectHistory);
+  // console.log(req.user);
+  const user = await User.findById(req.user._id);
+  console.log(user);
+  const AllUserProject = await Project.find({createdBy :  req.user._id})
+  console.log(AllPastProject);
   if (!AllUserProject) {
-    console.log("error");
     return res
       .status(200)
       .json(new ApiResponse(200, {}, "No Project has been created!!"));
@@ -105,6 +109,9 @@ const AllPastProject = asyncHandler(async (req, res) => {
 });
 
 const Profile = asyncHandler(async (req, res) => {
+  if(!req.user) {
+    throw new ApiError(500,"You are not Login")
+  }
   return res
     .status(200)
     .json(new ApiResponse(200, req.user, "User data fetched successfully"));
@@ -135,6 +142,10 @@ const updateProfile = asyncHandler(async (req, res) => {
       );
   }
 
+  if(!req.user) {
+    throw new ApiError(500,"You are not Login")
+  }
+
   const user = await User.findById(req.user._id);
 
   if (!user) return res.status(404).json(new ApiError(404, " User not found"));
@@ -161,6 +172,9 @@ const changepassword = asyncHandler(async (req, res) => {
 
   if(!(oldpassword && newpassword)) return res.status(500).json(new ApiError(500,{},"oldpassword and newpassword field can't be empty"));
 
+  if(!req.user) {
+    throw new ApiError(500,"You are not Login")
+  }
   const user = await User.findById(req.user._id)
   const isPasswordCorrect = await user.isPasswordCorrect(oldpassword)
 

@@ -13,4 +13,4 @@ const campaignSchema = Schema(
 
 const Campaign = model("Campaign", campaignSchema);
 
-module.exports = Campaign;
+module.exports = {Campaign};
