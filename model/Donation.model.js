@@ -17,6 +17,10 @@ const DonationSchema = Schema({
         type : Number,
         required : true,
     },
+    current_amount:{
+        type : Number,
+        default : 0,
+    },
     donation_date:{
         type : Date.now(),
     }
