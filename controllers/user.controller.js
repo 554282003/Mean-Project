@@ -15,9 +15,9 @@ const createaccesstoken = async (userId) => {
 };
 
 const userRegister = asyncHandler(async (req, res) => {
-  const { fullname, username, email, password, roles } = req.body;
+  const { fullname, username, email, password } = req.body;
 
-  if (!fullname || !username || !email || !password || !roles) {
+  if (!fullname || !username || !email || !password ) {
     throw new ApiError(400, "Bad request: missing parameters.");
   }
 
@@ -35,7 +35,6 @@ const userRegister = asyncHandler(async (req, res) => {
     username: username.toLowerCase(),
     email,
     password,
-    roles,
   });
 
   const createduser = await User.findById(user._id).select("-password");
@@ -93,10 +92,8 @@ const userLogin = asyncHandler(async (req, res) => {
 const AllPastProject = asyncHandler(async (req, res) => {
   // console.log(req.user);
   const user = await User.findById(req.user._id);
-  console.log(user);
   const AllUserProject = await Project.find({createdBy :  req.user._id})
-  console.log(AllPastProject);
-  if (!AllUserProject) {
+  if (AllUserProject.length == 0) {
     return res
       .status(200)
       .json(new ApiResponse(200, {}, "No Project has been created!!"));

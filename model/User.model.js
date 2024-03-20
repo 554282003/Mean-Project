@@ -21,10 +21,6 @@ const UserSchema = Schema(
       type: String,
       required: true,
     },
-    roles: {
-      type: String,
-      enum: ["donor", "campaign creater"],
-    },
   },
   { timestamps: true }
 );

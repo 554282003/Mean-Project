@@ -4,7 +4,7 @@ const projectSchema = Schema(
   {
     campaign_id: {
       type: Schema.Types.ObjectId,
-      ref: "campaign", //refer to the model
+      ref: "Campaign", //refer to the model
     },
     campaign_name: {
       type: String,
@@ -34,6 +34,10 @@ const projectSchema = Schema(
       required: true,
       default: 0,
     },
+    current_amount:{
+      type : Number,
+      default : 0,
+  },
     status: {
       type: String,
       enum: ["InProgress", "Completed"],

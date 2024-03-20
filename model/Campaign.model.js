@@ -6,7 +6,7 @@ const campaignSchema = Schema(
       type: String,
       required: true,
     },
-    allprojects: [{ type: Schema.Types.ObjectId, ref: "project" }],
+    allprojects: [{ type: Schema.Types.ObjectId, ref: "Project" }],
   },
   { timestamps: true }
 );

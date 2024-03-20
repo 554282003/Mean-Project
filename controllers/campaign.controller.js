@@ -25,4 +25,23 @@ const deleteCampaign = asyncHandler(async (req, res) => {
   }
 });
 
+// const tp = asyncHandler(async(req,res)=>{
+//   const {campid} = req.params.id;
+//   const campproject = await Campaign.aggregate(
+//     {
+//       $match : {
+//         "campid" : campid
+//       }
+//     },
+//     {
+//       $lookup : {
+//         from : "projects",
+//         localField : "allprojects",
+//         foreignField : "_id",
+//         as : "pro"
+//       }
+//     }
+//   )
+// })
+
 module.exports = { deleteCampaign };
